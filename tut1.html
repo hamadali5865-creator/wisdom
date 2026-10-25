@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School Finance Dashboard</title>
+  <link rel="stylesheet" href="tut1.css">
+</head>
+
+<body>
+  <div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+         School Finance
+        <span>Management System</span>
+      </div>
+
+      <nav class="nav">
+        <a href="#dashboard" class="active"> <span class="nav-text">Dashboard</span></a>
+        <a href="#transactions">⇄ <span class="nav-text">Transactions</span></a>
+        <a href="#student-credit"> <span class="nav-text">Student Credit</span></a>
+        <a href="#sales"> <span class="nav-text">Uniform &amp; Stationery Sales</span></a>
+        <a href="#vendors"> <span class="nav-text">Vendor Accounts</span></a>
+        <a href="#reports"> <span class="nav-text">Reports</span></a>
+        <a href="#settings">⚙ <span class="nav-text">Settings</span></a>
+      </nav>
+
+      <div class="profile">
+        👤 <span class="profile-text">Accountant<br>Finance Department</span>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main" id="dashboard">
+
+      <header class="topbar">
+        <button id="menuButton" aria-label="Toggle sidebar">☰</button>
+        <div>🔔 <span class="blue-text">3</span> 12 Oct 2026Accountant</div>
+      </header>
+
+      <div class="content">
+        <h1>Dashboard</h1>
+        <p class="subtitle">Welcome to School Finance Management System</p>
+
+        <!-- Summary cards -->
+        <section class="stats">
+          <div class="stat income">
+            <h4 class="green-text">● Total Income</h4>
+            <h2>Rs. 10,000</h2>
+            <p class="green-text">↑ 12% from last month</p>
+          </div>
+
+          <div class="stat expenses">
+            <h4 class="red-text">● Total Expenses</h4>
+            <h2>Rs. 69,500</h2>
+            <p class="red-text">↑ 8% from last month</p>
+          </div>
+
+          <div class="stat credit">
+            <h4 style="color:#8051d9">● Student Credit</h4>
+            <h2>Rs. 6,700</h2>
+            <p style="color:#d98618">↓ 5% from last month</p>
+          </div>
+
+          <div class="stat vendor">
+            <h4 class="blue-text">● Vendor Payable</h4>
+            <h2>Rs. 27,500</h2>
+            <p class="blue-text">↓ 3% from last month</p>
+          </div>
+        </section>
+
+        <section class="dashboard-grid">
+
+          <!-- Monthly chart -->
+          <div class="card">
+            <h3>Monthly Overview</h3>
+            <div class="chart">
+              <div class="month">
+                <div class="bars"><i class="bar" style="height:60px"></i><i class="bar red" style="height:40px"></i>
+                </div>Apr
+              </div>
+              <div class="month">
+                <div class="bars"><i class="bar" style="height:62px"></i><i class="bar red" style="height:47px"></i>
+                </div>May
+              </div>
+              <div class="month">
+                <div class="bars"><i class="bar" style="height:78px"></i><i class="bar red" style="height:65px"></i>
+                </div>Jun
+              </div>
+              <div class="month">
+                <div class="bars"><i class="bar" style="height:70px"></i><i class="bar red" style="height:50px"></i>
+                </div>Jul
+              </div>
+              <div class="month">
+                <div class="bars"><i class="bar" style="height:78px"></i><i class="bar red" style="height:68px"></i>
+                </div>Aug
+              </div>
+              <div class="month">
+                <div class="bars"><i class="bar" style="height:115px"></i><i class="bar red" style="height:87px"></i>
+                </div>Sep
+              </div>
+              <div class="month">
+                <div class="bars"><i class="bar" style="height:88px"></i><i class="bar red" style="height:70px"></i>
+                </div>Oct
+              </div>
+            </div>
+            <p style="font-size:11px;margin-top:10px">🟢 Income Expenses</p>
+          </div>
+
+          <!-- Expense breakdown -->
+          <div class="card">
+            <h3>Expense Breakdown</h3>
+            <div class="expense-info">
+              <div class="donut">
+                <div class="donut-center">Rs. 69,500<small>Total Expenses</small></div>
+              </div>
+              <div class="legend">
+                 Uniforms　38%<br>
+                 Stationery　26%<br>
+                🟢 Vendor Payments　22%<br>
+                🟣 Others　14%
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick actions -->
+          <div class="card">
+            <h3>Quick Actions</h3>
+            <div class="actions">
+              <button class="btn-blue" onclick="showAction('Add Transaction')">＋ Add Transaction</button>
+              <button class="btn-green" onclick="showAction('Add Student Sale')">👥 Add Student Sale</button>
+              <button class="btn-purple" onclick="showAction('Add Vendor Invoice')">▤ Add Vendor Invoice</button>
+              <button class="btn-orange" onclick="showAction('Record Payment')">▣ Record Payment</button>
+            </div>
+          </div>
+
+          <!-- Recent transactions -->
+          <div class="card transactions" id="transactions">
+            <h3>Recent Transactions</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Party</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>02 Oct 2026</td>
+                    <td>Ayesha Khan</td>
+                    <td>Uniform Sale</td>
+                    <td>Rs. 8,500</td>
+                    <td><span class="status paid">Paid</span></td>
+                  </tr>
+                  <tr>
+                    <td>04 Oct 2026</td>
+                    <td>Bright Supplies</td>
+                    <td>Stationery</td>
+                    <td>Rs. 42,000</td>
+                    <td><span class="status paid">Paid</span></td>
+                  </tr>
+                  <tr>
+                    <td>07 Oct 2026</td>
+                    <td>Ali Raza</td>
+                    <td>Credit Payment</td>
+                    <td>Rs. 1,500</td>
+                    <td><span class="status paid">Paid</span></td>
+                  </tr>
+                  <tr>
+                    <td>10 Oct 2026</td>
+                    <td>City Uniforms</td>
+                    <td>Vendor Invoice</td>
+                    <td>Rs. 27,500</td>
+                    <td><span class="status pending">Pending</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Right column -->
+          <div class="right-column">
+            <div class="card">
+              <h3>Recent Activity</h3>
+              <div class="activity-item"><b>Uniform Sale - Ayesha Khan</b><br>Rs. 8,500<br><small>02 Oct
+                  2026</small>　<span class="status paid">Paid</span></div>
+              <div class="activity-item"><b>Stationery Purchase - Bright Supplies</b><br>Rs. 42,000<br><small>04 Oct
+                  2026</small>　<span class="status paid">Paid</span></div>
+              <div class="activity-item"><b>Credit Payment - Ali Raza</b><br>Rs. 1,500<br><small>07 Oct
+                  2026</small>　<span class="status paid">Paid</span></div>
+              <div class="activity-item"><b>Vendor Invoice - City Uniforms</b><br>Rs. 27,500<br><small>10 Oct
+                  2026</small>　<span class="status pending">Pending</span></div>
+            </div>
+
+            <div class="card" id="reports">
+              <h3>Financial Report Summary</h3>
+              <div class="report-line"><span>🟢 Total Income</span><b>Rs. 10,000</b></div>
+              <div class="report-line"><span> Total Expenses</span><b>Rs. 69,500</b></div>
+              <div class="report-line"><span> Net Balance</span><b class="red-text">-Rs. 59,500</b></div>
+              <div class="notice">
+                HOD and GM can monitor all department activities. The Accountant can manage finance records.
+              </div>
+            </div>
+          </div>
+
+          <!-- Student credit -->
+          <div class="bottom-grid">
+            <div class="card" id="student-credit">
+              <h3>Student Sales &amp; Credit</h3>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Student</th>
+                      <th>Class</th>
+                      <th>Items</th>
+                      <th>Total Bill</th>
+                      <th>Paid</th>
+                      <th>Balance</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Ayesha Khan</td>
+                      <td>Grade 8</td>
+                      <td>Uniform</td>
+                      <td>8,500</td>
+                      <td>8,500</td>
+                      <td class="green-text">0</td>
+                    </tr>
+                    <tr>
+                      <td>Ali Raza</td>
+                      <td>Grade 7</td>
+                      <td>Stationery</td>
+                      <td>5,000</td>
+                      <td>1,500</td>
+                      <td class="balance">3,500</td>
+                    </tr>
+                    <tr>
+                      <td>Sara Ahmed</td>
+                      <td>Grade 9</td>
+                      <td>Sports Uniform</td>
+                      <td>3,200</td>
+                      <td>0</td>
+                      <td class="balance">3,200</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Vendor accounts -->
+            <div class="card" id="vendors">
+              <h3>Vendor Accounts</h3>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Vendor Name</th>
+                      <th>Category</th>
+                      <th>Total Bill</th>
+                      <th>Paid</th>
+                      <th>Balance</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Bright Supplies Ltd</td>
+                      <td>Stationery</td>
+                      <td>42,000</td>
+                      <td>42,000</td>
+                      <td><span class="status paid">Rs. 0</span></td>
+                    </tr>
+                    <tr>
+                      <td>City Uniforms</td>
+                      <td>Uniforms</td>
+                      <td>27,500</td>
+                      <td>0</td>
+                      <td><span class="status pending">Rs. 27,500</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <footer>
+          <span>School Finance Management System | HTML &amp; CSS</span>
+          <span>Better Records → Better Decisions → A Stronger School</span>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function showAction(action) {
+      alert(action + " button clicked. Real record saving requires a backend.");
+    }
+
+    document.getElementById("menuButton").addEventListener("click", function () {
+      const sidebar = document.querySelector(".sidebar");
+      sidebar.style.display = sidebar.style.display === "none" ? "block" : "none";
+    });
+  </script>
+</body>
+
+</html>
